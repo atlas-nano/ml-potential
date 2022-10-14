@@ -1,0 +1,25 @@
+units                metal
+atom_style           atomic
+boundary             p p p
+                     
+read_data            data.lic12
+
+pair_style           mlip mlip.ini
+pair_coeff           * *
+pair_coeff           * *
+                     
+variable etol equal 0.0
+variable ftol equal 1.0e-10
+variable maxiter equal 100
+variable maxeval equal 1000
+variable dmax equal 1.0e-2            
+                     
+thermo		1
+thermo_style custom step temp pe press pxx pyy pzz pxy pxz pyz lx ly lz vol                     
+                     
+                     
+timestep             1
+                     
+
+fix 3 all box/relax aniso 0.0
+minimize ${etol} ${ftol} ${maxiter} ${maxeval}                     
