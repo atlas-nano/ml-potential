@@ -2,6 +2,8 @@
 # author: robert ramji
 # contact: rramji@ucsd.edu
 
+import numpy as np
+
 # putting the below functions together
 def write_xyz_from_cfg(cfg_file, cfg_name):
     cfgs = read_cfgs(cfg_file)
@@ -33,6 +35,13 @@ def read_cfgs(cfg_file):
 def cfg2data(cfg):
     size = int(cfg[2].strip())
     element_type_dict = {0: "Li", 1: "C"}
+    cell = np.zeros((3,3))
+    
+    if "Supercell" in cfg[3]:
+        for i,line in enumerate(cfg[4:7]):
+            dat = line.strip().split()
+            vec = np.array([float(a) for a in dat])
+            cell[i] = vec
 
     if "AtomData" in cfg[7]:
         atoms = []
@@ -52,7 +61,8 @@ def cfg2data(cfg):
         "element": [],
         "xyz": [],
         "forces": [],
-        "energy": energy
+        "energy": energy,
+        "cell": cell
     }
 
     for at in atoms:
