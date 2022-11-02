@@ -1,0 +1,118 @@
+SystemName graphite_scf
+SystemLabel graphite_scf
+
+NumberOfAtoms   36
+NumberOfSpecies 1
+
+%block ChemicalSpeciesLabel
+1  6   C-gga
+%endblock ChemicalSpeciesLabel
+
+PAO.BasisSize  DZP
+PAO.EnergyShift  10 meV
+
+%block PS.Lmax
+C-gga   2
+%endblock PS.Lmax
+
+LatticeConstant 1.000000 Ang
+%block LatticeVectors
+	7.3920000000	0.0000000000	0.0000000000
+	-3.6960000000	6.4016597848	0.0000000000
+	0.0000000000	0.0000000000	4.0937100000
+%endblock LatticeVectors
+
+AtomicCoordinatesFormat Ang
+%block AtomicCoordinatesAndAtomicSpecies
+	0.00000000	0.00000000	1.02342750	1
+	0.00000000	0.00000000	3.07028250	1
+	-1.23200000	2.13388659	1.02342750	1
+	-2.46400000	4.26777319	3.07028250	1
+	2.46400000	4.26777319	1.02342750	1
+	1.23200000	2.13388659	3.07028250	1
+	2.46400000	0.00000000	1.02342750	1
+	4.92800000	0.00000000	3.07028250	1
+	2.46400000	0.00000000	3.07028250	1
+	4.92800000	0.00000000	1.02342750	1
+	2.46400000	4.26777319	3.07028250	1
+	1.23200000	2.13388659	1.02342750	1
+	-1.23200000	2.13388659	3.07028250	1
+	-2.46400000	4.26777319	1.02342750	1
+	0.00000000	4.26777319	1.02342750	1
+	3.69600000	2.13388659	3.07028250	1
+	3.69600000	2.13388659	1.02342750	1
+	0.00000000	4.26777319	3.07028250	1
+	0.00000000	1.42258964	1.02342750	1
+	3.69600000	4.97907014	3.07028250	1
+	2.46400123	5.69036496	1.02342750	1
+	1.23199877	0.71129482	3.07028250	1
+	-2.46400123	5.69036496	1.02342750	1
+	6.16000123	0.71129482	3.07028250	1
+	-1.23200000	3.55647624	1.02342750	1
+	4.92800000	2.84518355	3.07028250	1
+	1.23200123	3.55647837	1.02342750	1
+	2.46399877	2.84518142	3.07028250	1
+	-0.00000123	5.69036496	1.02342750	1
+	3.69600123	0.71129482	3.07028250	1
+	2.46400000	1.42258964	1.02342750	1
+	1.23200000	4.97907014	3.07028250	1
+	4.92800123	1.42259177	1.02342750	1
+	-1.23200123	4.97906801	3.07028250	1
+	3.69599877	3.55647837	1.02342750	1
+	0.00000123	2.84518142	3.07028250	1
+%endblock AtomicCoordinatesAndAtomicSpecies
+
+Kgrid_NoTRS  T
+%block kgrid_MonkhorstPack
+4       0       0       0.0
+0       4       0       0.0
+0       0       4       0.0
+%endblock kgrid_MonkhorstPack
+
+AtomCoorFormatOut Ang
+
+BlockSize 1
+#ProcessorY 12
+Diag.ParallelOverK   T
+Diag.DivideAndConquer F
+
+MeshCutoff   300 Ry
+SCF.FreeE.Tolerance 1E-3 eV
+SCF.EDM.Tolerance   5E-3 eV
+DM.Tolerance  1E-3
+DM.Require.Energy.Convergence T
+DM.NumberPulay 4
+
+XC.Functional GGA
+XC.Authors    PBE
+
+UseSaveData        F
+
+SolutionMethod     diagon
+MD.TypeOfRun       CG
+MD.VariableCell    F
+MD.NumCGsteps      00
+MD.MaxCGDispl      0.200000 Bohr
+#MD.MaxStressTol    1.000000 GPa
+#MD.MaxForceTol     0.010000 eV/Ang
+
+WriteMDHistory T
+WriteCoorStep T
+WriteForces T
+
+WriteCoorStep    T
+WriteEigenValues T
+
+WriteDM    F
+
+MM.UnitsDistance Ang  # what this program prints out DO NOT CHANGE
+MM.UnitsEnergy    eV  # what this program prints out DO NOT CHANGE
+MM.Grimme.S6     0.75 # Grimme-paper for PBE (correct for your functional)
+MM.Grimme.D     20.   # Grimme-paper (correct for your functional)
+%block MM.Potentials
+  1   1 Grimme     18.14      2.904 # C, 10.1002/jcc.20495
+%endblock MM.Potentials
+
+#%block ProjectedDensityOfStates
+# -200.0  120.0  0.4  12800  eV
+#%endblock ProjectedDensityOfStates
