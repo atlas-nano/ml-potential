@@ -5,13 +5,17 @@ ${k}       0       0       0.0
 0       0       ${k}       0.0
 %endblock kgrid_MonkhorstPack
 
+AtomCoorFormatOut Ang
+
 BlockSize 1
 #ProcessorY 12
 Diag.ParallelOverK   T
 Diag.DivideAndConquer F
 
-MeshCutoff   400 Ry
-DM.Tolerance  1E-5
+MeshCutoff   300 Ry
+SCF.FreeE.Tolerance 1E-3 eV
+SCF.EDM.Tolerance   5E-3 eV
+DM.Tolerance  1E-3
 DM.Require.Energy.Convergence T
 DM.NumberPulay 4
 
@@ -41,9 +45,7 @@ MM.UnitsEnergy    eV  # what this program prints out DO NOT CHANGE
 MM.Grimme.S6     0.75 # Grimme-paper for PBE (correct for your functional)
 MM.Grimme.D     20.   # Grimme-paper (correct for your functional)
 %block MM.Potentials
-  1   1 Grimme     16.69      1.650 # Li, 10.1002/jcc.20495
-  1   2 Grimme     17.40      2.277 # Li / C
-  2   2 Grimme     18.14      2.904 # C, 10.1002/jcc.20495
+  1   1 Grimme     18.14      2.904 # C, 10.1002/jcc.20495
 %endblock MM.Potentials
 
 #%block ProjectedDensityOfStates
