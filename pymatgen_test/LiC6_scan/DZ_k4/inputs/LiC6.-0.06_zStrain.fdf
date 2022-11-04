@@ -1,0 +1,92 @@
+SystemName LiC6_scf
+SystemLabel LiC6_scf
+
+NumberOfAtoms   7
+NumberOfSpecies 2
+
+%block ChemicalSpeciesLabel
+1  3   Li-gga
+2  6   C-gga
+%endblock ChemicalSpeciesLabel
+
+PAO.BasisSize  DZ
+PAO.EnergyShift  10 meV
+
+%block PS.Lmax
+C-gga   2
+Li-gga  2
+%endblock PS.Lmax
+
+LatticeConstant 1.000000 Ang
+%block LatticeVectors
+	4.3161300000	0.0000000000	0.0000000000
+	-2.1580650000	3.7378782260	0.0000000000
+	0.0000000000	0.0000000000	3.4778684000
+%endblock LatticeVectors
+
+AtomicCoordinatesFormat Ang
+%block AtomicCoordinatesAndAtomicSpecies
+	0.00000000	0.00000000	0.00000000	2
+	-0.70288177	1.21742694	1.73893420	1
+	-1.45518323	2.52045129	1.73893420	1
+	1.45518323	2.52045129	1.73893420	1
+	0.70288177	1.21742694	1.73893420	1
+	1.40576354	0.00000000	1.73893420	1
+	2.91036646	0.00000000	1.73893420	1
+%endblock AtomicCoordinatesAndAtomicSpecies
+
+Kgrid_NoTRS  T
+%block kgrid_MonkhorstPack
+4       0       0       0.0
+0       4       0       0.0
+0       0       4       0.0
+%endblock kgrid_MonkhorstPack
+
+AtomCoorFormatOut Ang
+
+BlockSize 1
+#ProcessorY 12
+Diag.ParallelOverK   T
+Diag.DivideAndConquer F
+
+MeshCutoff   300 Ry
+SCF.FreeE.Tolerance 1E-3 eV
+SCF.EDM.Tolerance   5E-3 eV
+DM.Tolerance  1E-3
+DM.Require.Energy.Convergence T
+DM.NumberPulay 4
+
+XC.Functional GGA
+XC.Authors    PBE
+
+UseSaveData        F
+
+MD.TypeOfRun       CG
+MD.VariableCell    F
+MD.NumCGsteps      00
+MD.MaxCGDispl      0.200000 Bohr
+MD.MaxStressTol    1.000000 GPa
+MD.MaxForceTol     0.010000 eV/Ang
+
+WriteMDHistory T
+WriteCoorStep T
+WriteForces T
+
+WriteCoorStep    T
+WriteEigenValues T
+
+WriteDM    F
+
+MM.UnitsDistance Ang  # what this program prints out DO NOT CHANGE
+MM.UnitsEnergy    eV  # what this program prints out DO NOT CHANGE
+MM.Grimme.S6     0.75 # Grimme-paper for PBE (correct for your functional)
+MM.Grimme.D     20.   # Grimme-paper (correct for your functional)
+%block MM.Potentials
+  1   1 Grimme     16.69      1.650 # Li, 10.1002/jcc.20495
+  1   2 Grimme     17.40      2.277 # Li / C
+  2   2 Grimme     18.14      2.904 # C, 10.1002/jcc.20495
+%endblock MM.Potentials
+
+#%block ProjectedDensityOfStates
+# -200.0  120.0  0.4  12800  eV
+#%endblock ProjectedDensityOfStates
