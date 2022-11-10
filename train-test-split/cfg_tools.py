@@ -78,7 +78,7 @@ def write_xyz_trajectory(atom_data_dict,name):
     with open(f"{name}.xyz", "w") as f:
         for frame in atom_data_dict:
             f.write(f"{frame['size']}\n")
-            f.write(f"graphite\n")
+            f.write(f"{name}\n")
 
             for i in range(frame['size']):
                 x = round(frame['xyz'][i][0],4)
