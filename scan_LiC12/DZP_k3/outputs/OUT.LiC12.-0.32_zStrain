@@ -1,0 +1,887 @@
+Siesta Version  : 4.1.5
+Architecture    : x86_64-unknown-linux-gnu--unknown
+Compiler version: GNU Fortran (GCC) 11.3.0
+Compiler flags  : mpif90 -g -O2 -fallow-argument-mismatch
+PP flags        : -DMPI -DFC_HAVE_FLUSH -DFC_HAVE_ABORT
+Libraries       :  -I/global/software/sl-7.x86_64/modules/intel/2020.4.304/mkl/include  /globall/software/sl-7.x86_64/modules/intel/2020.4.304/mkl/lib/intel64/libmkl_scalapack_lp64.a -Wl,--start-group /global/software/sl-7.x86_64/modules/intel/2020.4.304/mkl/lib/intel64/libmkl_intel_lp64.a /global/software/sl-7.x86_64/modules/intel/2020.4.304/mkl/lib/intel64/libmkl_sequential.a /global/software/sl-7.x86_64/modules/intel/2020.4.304/mkl/lib/intel64/libmkl_core.a /global/software/sl-7.x86_64/modules/intel/2020.4.304/mkl/lib/intel64/libmkl_blacs_openmpi_lp64.a -Wl,--end-group -lpthread -lm -ldl
+PARALLEL version
+
+* Running on 12 nodes in parallel
+>> Start of run:   9-NOV-2022   3:56:27
+
+                           ***********************       
+                           *  WELCOME TO SIESTA  *       
+                           ***********************       
+
+reinit: Reading from standard input
+reinit: Dumped input in INPUT_TMP.54358
+************************** Dump of input data file ****************************
+SystemName LiC12_scf
+SystemLabel LiC12_scf
+NumberOfAtoms   13
+NumberOfSpecies 2
+%block ChemicalSpeciesLabel
+1  3   Li-gga
+2  6   C-gga
+%endblock ChemicalSpeciesLabel
+PAO.BasisSize  DZP
+PAO.EnergyShift  10 meV
+%block PS.Lmax
+C-gga   2
+Li-gga  2
+%endblock PS.Lmax
+LatticeConstant 1.000000 Ang
+%block LatticeVectors
+	4.2686000000	0.0000000000	0.0000000000
+	-2.1343000000	3.6967160386	0.0000000000
+	0.0000000000	0.0000000000	4.7755720000
+%endblock LatticeVectors
+AtomicCoordinatesFormat Ang
+%block AtomicCoordinatesAndAtomicSpecies
+	0.00000000	0.00000000	0.00000000	2
+	1.42144380	0.00000000	1.19389300	1
+	2.84715620	0.00000000	3.58167900	1
+	-0.71072190	1.23100644	1.19389300	1
+	-1.42357810	2.46570960	3.58167900	1
+	1.42357810	2.46570960	1.19389300	1
+	0.71072190	1.23100644	3.58167900	1
+	2.84715620	0.00000000	1.19389300	1
+	1.42144380	0.00000000	3.58167900	1
+	-1.42357810	2.46570960	1.19389300	1
+	-0.71072190	1.23100644	3.58167900	1
+	0.71072190	1.23100644	1.19389300	1
+	1.42357810	2.46570960	3.58167900	1
+%endblock AtomicCoordinatesAndAtomicSpecies
+Kgrid_NoTRS  T
+%block kgrid_MonkhorstPack
+3       0       0       0.0
+0       3       0       0.0
+0       0       3       0.0
+%endblock kgrid_MonkhorstPack
+AtomCoorFormatOut Ang
+BlockSize 1
+#ProcessorY 12
+Diag.ParallelOverK   T
+Diag.DivideAndConquer F
+MeshCutoff   300 Ry
+SCF.FreeE.Tolerance 1E-3 eV
+SCF.EDM.Tolerance   5E-3 eV
+DM.Tolerance  1E-3
+DM.Require.Energy.Convergence T
+DM.NumberPulay 4
+XC.Functional GGA
+XC.Authors    PBE
+UseSaveData        F
+MD.TypeOfRun       CG
+MD.VariableCell    F
+MD.NumCGsteps      00
+MD.MaxCGDispl      0.200000 Bohr
+MD.MaxStressTol    1.000000 GPa
+MD.MaxForceTol     0.010000 eV/Ang
+WriteMDHistory T
+WriteCoorStep T
+WriteForces T
+WriteCoorStep    T
+WriteEigenValues T
+WriteDM    F
+MM.UnitsDistance Ang  # what this program prints out DO NOT CHANGE
+MM.UnitsEnergy    eV  # what this program prints out DO NOT CHANGE
+MM.Grimme.S6     0.75 # Grimme-paper for PBE (correct for your functional)
+MM.Grimme.D     20.   # Grimme-paper (correct for your functional)
+%block MM.Potentials
+  1   1 Grimme     16.69      1.650 # Li, 10.1002/jcc.20495
+  1   2 Grimme     17.40      2.277 # Li / C
+  2   2 Grimme     18.14      2.904 # C, 10.1002/jcc.20495
+%endblock MM.Potentials
+#%block ProjectedDensityOfStates
+# -200.0  120.0  0.4  12800  eV
+#%endblock ProjectedDensityOfStates
+************************** End of input data file *****************************
+
+reinit: -----------------------------------------------------------------------
+reinit: System Name: LiC12_scf
+reinit: -----------------------------------------------------------------------
+reinit: System Label: LiC12_scf
+reinit: -----------------------------------------------------------------------
+Reading two-body potentials
+Grimme - two-body potential between 1 and 1
+Grimme - two-body potential between 1 and 2
+Grimme - two-body potential between 2 and 2
+
+initatom: Reading input for the pseudopotentials and atomic orbitals ----------
+Species number:   1 Atomic number:    3 Label: Li-gga
+Species number:   2 Atomic number:    6 Label: C-gga
+
+Ground state valence configuration:   2s01
+Reading pseudopotential information in formatted form from Li-gga.psf
+
+Valence configuration for pseudopotential generation:
+2s( 1.00) rc: 2.28
+2p( 0.00) rc: 2.28
+3d( 0.00) rc: 2.59
+4f( 0.00) rc: 2.59
+Ground state valence configuration:   2s02  2p02
+Reading pseudopotential information in formatted form from C-gga.psf
+
+Valence configuration for pseudopotential generation:
+2s( 2.00) rc: 1.56
+2p( 2.00) rc: 1.56
+3d( 0.00) rc: 1.56
+4f( 0.00) rc: 1.56
+relmxkb: Read Max KB Ang. Momentum=    2 for species C-gga
+relmxkb: Read Max KB Ang. Momentum=    2 for species Li-gga
+
+<basis_specs>
+===============================================================================
+Li-gga               Z=   3    Mass=  6.9400        Charge= 0.17977+309
+Lmxo=0 Lmxkb= 2    BasisType=split      Semic=F
+L=0  Nsemic=0  Cnfigmx=2
+          i=1  nzeta=2  polorb=1  (2s)
+            splnorm:   0.15000    
+               vcte:    0.0000    
+               rinn:    0.0000    
+               qcoe:    0.0000    
+               qyuk:    0.0000    
+               qwid:   0.10000E-01
+                rcs:    0.0000      0.0000    
+            lambdas:    1.0000      1.0000    
+-------------------------------------------------------------------------------
+L=0  Nkbl=1  erefs: 0.17977+309
+L=1  Nkbl=1  erefs: 0.17977+309
+L=2  Nkbl=1  erefs: 0.17977+309
+===============================================================================
+</basis_specs>
+
+atom: Called for Li-gga                (Z =   3)
+
+read_vps: Pseudopotential generation method:
+read_vps: ATM 3.2.2 Troullier-Martins                       
+Valence charge for ps generation:    1.00000
+
+read_vps: Pseudopotential includes a core correction:
+read_vps: Pseudo-core for xc-correction
+
+xc_check: Exchange-correlation functional:
+xc_check: GGA Perdew, Burke & Ernzerhof 1996
+V l=0 = -2*Zval/r beyond r=  2.2278
+V l=1 = -2*Zval/r beyond r=  2.2278
+V l=2 = -2*Zval/r beyond r=  2.5245
+All V_l potentials equal beyond r=  2.4622
+This should be close to max(r_c) in ps generation
+All pots = -2*Zval/r beyond r=  2.5245
+
+VLOCAL1: 99.0% of the norm of Vloc inside      7.160 Ry
+VLOCAL1: 99.9% of the norm of Vloc inside     16.318 Ry
+atom: Maximum radius for 4*pi*r*r*local-pseudopot. charge    2.86079
+atom: Maximum radius for r*vlocal+2*Zval:    2.43160
+GHOST: No ghost state for L =  0
+GHOST: No ghost state for L =  1
+GHOST: No ghost state for L =  2
+
+KBgen: Kleinman-Bylander projectors: 
+   l= 0   rc=  2.654023   el= -0.211234   Ekb=  1.742119   kbcos=  0.228463
+   l= 1   rc=  2.721230   el= -0.080095   Ekb= -1.122375   kbcos= -0.147941
+   l= 2   rc=  2.825246   el=  0.002001   Ekb= -0.207076   kbcos= -0.031965
+
+KBgen: Total number of Kleinman-Bylander projectors:    9
+atom: -------------------------------------------------------------------------
+
+atom: SANKEY-TYPE ORBITALS:
+atom: Selected multiple-zeta basis: split     
+
+SPLIT: Orbitals with angular momentum L= 0
+
+SPLIT: Basis orbitals for state 2s
+
+SPLIT: PAO cut-off radius determined from an
+SPLIT: energy shift=  0.000735 Ry
+
+   izeta = 1
+                 lambda =    1.000000
+                     rc =   11.897381
+                 energy =   -0.210580
+                kinetic =    0.143382
+    potential(screened) =   -0.353962
+       potential(ionic) =   -0.533453
+
+   izeta = 2
+                 rmatch =    8.489163
+              splitnorm =    0.150000
+                 energy =   -0.186081
+                kinetic =    0.225882
+    potential(screened) =   -0.411964
+       potential(ionic) =   -0.593024
+
+POLgen: Perturbative polarization orbital with L=  1
+
+POLgen: Polarization orbital for state 2s
+
+   izeta = 1
+                     rc =   11.897381
+                 energy =   -0.027011
+                kinetic =    0.282985
+    potential(screened) =   -0.309997
+       potential(ionic) =   -0.490997
+atom: Total number of Sankey-type orbitals:  5
+
+atm_pop: Valence configuration (for local Pseudopot. screening):
+ 2s( 1.00)                                                            
+Vna: chval, zval:    1.00000   1.00000
+
+Vna:  Cut-off radius for the neutral-atom potential:  11.897381
+comcore: Pseudo-core radius Rcore=  3.450946
+
+atom: _________________________________________________________________________
+
+<basis_specs>
+===============================================================================
+C-gga                Z=   6    Mass=  12.010        Charge= 0.17977+309
+Lmxo=1 Lmxkb= 2    BasisType=split      Semic=F
+L=0  Nsemic=0  Cnfigmx=2
+          i=1  nzeta=2  polorb=0  (2s)
+            splnorm:   0.15000    
+               vcte:    0.0000    
+               rinn:    0.0000    
+               qcoe:    0.0000    
+               qyuk:    0.0000    
+               qwid:   0.10000E-01
+                rcs:    0.0000      0.0000    
+            lambdas:    1.0000      1.0000    
+L=1  Nsemic=0  Cnfigmx=2
+          i=1  nzeta=2  polorb=1  (2p)
+            splnorm:   0.15000    
+               vcte:    0.0000    
+               rinn:    0.0000    
+               qcoe:    0.0000    
+               qyuk:    0.0000    
+               qwid:   0.10000E-01
+                rcs:    0.0000      0.0000    
+            lambdas:    1.0000      1.0000    
+-------------------------------------------------------------------------------
+L=0  Nkbl=1  erefs: 0.17977+309
+L=1  Nkbl=1  erefs: 0.17977+309
+L=2  Nkbl=1  erefs: 0.17977+309
+===============================================================================
+</basis_specs>
+
+atom: Called for C-gga                 (Z =   6)
+
+read_vps: Pseudopotential generation method:
+read_vps: ATM 3.2.2 Troullier-Martins                       
+Valence charge for ps generation:    4.00000
+
+xc_check: Exchange-correlation functional:
+xc_check: GGA Perdew, Burke & Ernzerhof 1996
+V l=0 = -2*Zval/r beyond r=  1.5227
+V l=1 = -2*Zval/r beyond r=  1.5227
+V l=2 = -2*Zval/r beyond r=  1.5227
+All V_l potentials equal beyond r=  1.4851
+This should be close to max(r_c) in ps generation
+All pots = -2*Zval/r beyond r=  1.5227
+
+VLOCAL1: 99.0% of the norm of Vloc inside     19.682 Ry
+VLOCAL1: 99.9% of the norm of Vloc inside     44.856 Ry
+atom: Maximum radius for 4*pi*r*r*local-pseudopot. charge    1.79142
+atom: Maximum radius for r*vlocal+2*Zval:    1.54183
+GHOST: No ghost state for L =  0
+GHOST: No ghost state for L =  1
+GHOST: No ghost state for L =  2
+
+KBgen: Kleinman-Bylander projectors: 
+   l= 0   rc=  1.661951   el= -1.010689   Ekb=  5.289847   kbcos=  0.316429
+   l= 1   rc=  1.661951   el= -0.388490   Ekb= -4.102504   kbcos= -0.351025
+   l= 2   rc=  1.747182   el=  0.001971   Ekb= -1.006005   kbcos= -0.008530
+
+KBgen: Total number of Kleinman-Bylander projectors:    9
+atom: -------------------------------------------------------------------------
+
+atom: SANKEY-TYPE ORBITALS:
+atom: Selected multiple-zeta basis: split     
+
+SPLIT: Orbitals with angular momentum L= 0
+
+SPLIT: Basis orbitals for state 2s
+
+SPLIT: PAO cut-off radius determined from an
+SPLIT: energy shift=  0.000735 Ry
+
+   izeta = 1
+                 lambda =    1.000000
+                     rc =    5.948690
+                 energy =   -1.010099
+                kinetic =    0.827121
+    potential(screened) =   -1.837220
+       potential(ionic) =   -5.392783
+
+   izeta = 2
+                 rmatch =    3.518811
+              splitnorm =    0.150000
+                 energy =   -0.877891
+                kinetic =    1.289227
+    potential(screened) =   -2.167118
+       potential(ionic) =   -5.982073
+
+SPLIT: Orbitals with angular momentum L= 1
+
+SPLIT: Basis orbitals for state 2p
+
+SPLIT: PAO cut-off radius determined from an
+SPLIT: energy shift=  0.000735 Ry
+
+   izeta = 1
+                 lambda =    1.000000
+                     rc =    7.638387
+                 energy =   -0.387843
+                kinetic =    2.314739
+    potential(screened) =   -2.702582
+       potential(ionic) =   -6.092371
+
+   izeta = 2
+                 rmatch =    3.840617
+              splitnorm =    0.150000
+                 energy =   -0.270479
+                kinetic =    3.438347
+    potential(screened) =   -3.708826
+       potential(ionic) =   -7.497707
+
+POLgen: Perturbative polarization orbital with L=  2
+
+POLgen: Polarization orbital for state 2p
+
+   izeta = 1
+                     rc =    7.638387
+                 energy =    0.921402
+                kinetic =    1.955040
+    potential(screened) =   -1.033637
+       potential(ionic) =   -3.679558
+atom: Total number of Sankey-type orbitals: 13
+
+atm_pop: Valence configuration (for local Pseudopot. screening):
+ 2s( 2.00)                                                            
+ 2p( 2.00)                                                            
+Vna: chval, zval:    4.00000   4.00000
+
+Vna:  Cut-off radius for the neutral-atom potential:   7.638387
+
+atom: _________________________________________________________________________
+
+prinput: Basis input ----------------------------------------------------------
+
+PAO.BasisType split     
+
+%block ChemicalSpeciesLabel
+    1    3 Li-gga                  # Species index, atomic number, species label
+    2    6 C-gga                   # Species index, atomic number, species label
+%endblock ChemicalSpeciesLabel
+
+%block PAO.Basis                 # Define Basis set
+Li-gga                1                    # Species label, number of l-shells
+ n=2   0   2 P   1                   # n, l, Nzeta, Polarization, NzetaPol
+  11.897      8.489   
+   1.000      1.000   
+C-gga                 2                    # Species label, number of l-shells
+ n=2   0   2                         # n, l, Nzeta 
+   5.949      3.519   
+   1.000      1.000   
+ n=2   1   2 P   1                   # n, l, Nzeta, Polarization, NzetaPol
+   7.638      3.841   
+   1.000      1.000   
+%endblock PAO.Basis
+
+prinput: ----------------------------------------------------------------------
+
+coor:   Atomic-coordinates input format  =     Cartesian coordinates
+coor:                                          (in Angstroms)
+
+siesta: Atomic coordinates (Bohr) and species
+siesta:      0.00000   0.00000   0.00000  2        1
+siesta:      2.68614   0.00000   2.25613  1        2
+siesta:      5.38035   0.00000   6.76840  1        3
+siesta:     -1.34307   2.32627   2.25613  1        4
+siesta:     -2.69017   4.65952   6.76840  1        5
+siesta:      2.69017   4.65952   2.25613  1        6
+siesta:      1.34307   2.32627   6.76840  1        7
+siesta:      5.38035   0.00000   2.25613  1        8
+siesta:      2.68614   0.00000   6.76840  1        9
+siesta:     -2.69017   4.65952   2.25613  1       10
+siesta:     -1.34307   2.32627   6.76840  1       11
+siesta:      1.34307   2.32627   2.25613  1       12
+siesta:      2.69017   4.65952   6.76840  1       13
+
+siesta: System type = bulk      
+
+initatomlists: Number of atoms, orbitals, and projectors:     13    73   117
+
+siesta: ******************** Simulation parameters ****************************
+siesta:
+siesta: The following are some of the parameters of the simulation.
+siesta: A complete list of the parameters used, including default values,
+siesta: can be found in file out.fdf
+siesta:
+redata: Spin configuration                          = none
+redata: Number of spin components                   = 1
+redata: Time-Reversal Symmetry                      = T
+redata: Spin spiral                                 = F
+redata: Long output                                 =   F
+redata: Number of Atomic Species                    =        2
+redata: Charge density info will appear in .RHO file
+redata: Write Mulliken Pop.                         = NO
+redata: Matel table size (NRTAB)                    =     1024
+redata: Mesh Cutoff                                 =   300.0000 Ry
+redata: Net charge of the system                    =     0.0000 |e|
+redata: Min. number of SCF Iter                     =        0
+redata: Max. number of SCF Iter                     =     1000
+redata: SCF convergence failure will abort job
+redata: SCF mix quantity                            = Hamiltonian
+redata: Mix DM or H after convergence               =   F
+redata: Recompute H after scf cycle                 =   F
+redata: Mix DM in first SCF step                    =   T
+redata: Write Pulay info on disk                    =   F
+redata: New DM Occupancy tolerance                  = 0.000000000001
+redata: No kicks to SCF
+redata: DM Mixing Weight for Kicks                  =     0.5000
+redata: Require Harris convergence for SCF          =   F
+redata: Harris energy tolerance for SCF             =     0.000100 eV
+redata: Require DM convergence for SCF              =   T
+redata: DM tolerance for SCF                        =     0.001000
+redata: Require EDM convergence for SCF             =   F
+redata: EDM tolerance for SCF                       =     0.005000 eV
+redata: Require H convergence for SCF               =   T
+redata: Hamiltonian tolerance for SCF               =     0.001000 eV
+redata: Require (free) Energy convergence for SCF   =   T
+redata: (free) Energy tolerance for SCF             =     0.001000 eV
+redata: Using Saved Data (generic)                  =   F
+redata: Use continuation files for DM               =   F
+redata: Neglect nonoverlap interactions             =   F
+redata: Method of Calculation                       = Diagonalization
+redata: Electronic Temperature                      =   299.9869 K
+redata: Fix the spin of the system                  =   F
+redata: Dynamics option                             = Single-point calculation
+mix.SCF: Pulay mixing                            = Pulay
+mix.SCF:    Variant                              = stable
+mix.SCF:    History steps                        = 4
+mix.SCF:    Linear mixing weight                 =     0.250000
+mix.SCF:    Mixing weight                        =     0.250000
+mix.SCF:    SVD condition                        = 0.1000E-07
+redata: ***********************************************************************
+
+%block SCF.Mixers
+  Pulay
+%endblock SCF.Mixers
+
+%block SCF.Mixer.Pulay
+  # Mixing method
+  method pulay
+  variant stable
+
+  # Mixing options
+  weight 0.2500
+  weight.linear 0.2500
+  history 4
+%endblock SCF.Mixer.Pulay
+
+DM_history_depth set to one: no extrapolation allowed by default for geometry relaxation
+Size of DM history Fstack: 1
+Total number of electrons:    16.000000
+Total ionic charge:    16.000000
+
+* ProcessorY, Blocksize:    3   1
+
+
+* Orbital distribution balance (max,min):     7     6
+
+ Kpoints in:           18 . Kpoints trimmed:           14
+
+siesta: k-grid: Number of k-points =    14
+siesta: k-grid: Cutoff (effective) =     6.403 Ang
+siesta: k-grid: Supercell and displacements
+siesta: k-grid:    3   0   0      0.000
+siesta: k-grid:    0   3   0      0.000
+siesta: k-grid:    0   0   3      0.000
+
+diag: Algorithm                                     = Expert
+diag: Parallel over k                               =   T
+diag: Use parallel 2D distribution                  =   T
+diag: Parallel block-size                           = 1
+diag: Parallel distribution                         =     3 x     4
+diag: Used triangular part                          = Lower
+diag: Absolute tolerance                            =  0.100E-15
+diag: Orthogonalization factor                      =  0.100E-05
+diag: Memory factor                                 =  1.0000
+
+superc: Internal auxiliary supercell:     9 x     9 x     7  =     567
+superc: Number of atoms, orbitals, and projectors:   7371  41391  66339
+
+
+ts: **************************************************************
+ts: Save H and S matrices                           =    F
+ts: Save DM and EDM matrices                        =    F
+ts: Only save the overlap matrix S                  =    F
+ts: **************************************************************
+
+************************ Begin: TS CHECKS AND WARNINGS ************************
+************************ End: TS CHECKS AND WARNINGS **************************
+
+
+                     ====================================
+                        Single-point calculation
+                     ====================================
+
+outcoor: Atomic coordinates (Ang):                          
+    0.00000000    0.00000000    0.00000000   2       1  C-gga
+    1.42144380    0.00000000    1.19389300   1       2  Li-gga
+    2.84715620    0.00000000    3.58167900   1       3  Li-gga
+   -0.71072190    1.23100644    1.19389300   1       4  Li-gga
+   -1.42357810    2.46570960    3.58167900   1       5  Li-gga
+    1.42357810    2.46570960    1.19389300   1       6  Li-gga
+    0.71072190    1.23100644    3.58167900   1       7  Li-gga
+    2.84715620    0.00000000    1.19389300   1       8  Li-gga
+    1.42144380    0.00000000    3.58167900   1       9  Li-gga
+   -1.42357810    2.46570960    1.19389300   1      10  Li-gga
+   -0.71072190    1.23100644    3.58167900   1      11  Li-gga
+    0.71072190    1.23100644    1.19389300   1      12  Li-gga
+    1.42357810    2.46570960    3.58167900   1      13  Li-gga
+
+superc: Internal auxiliary supercell:     9 x     9 x     7  =     567
+superc: Number of atoms, orbitals, and projectors:   7371  41391  66339
+
+outcell: Unit cell vectors (Ang):
+        4.268600    0.000000    0.000000
+       -2.134300    3.696716    0.000000
+        0.000000    0.000000    4.775572
+
+outcell: Cell vector modules (Ang)   :    4.268600    4.268600    4.775572
+outcell: Cell angles (23,13,12) (deg):     90.0000     90.0000    120.0000
+outcell: Cell volume (Ang**3)        :     75.3576
+<dSpData1D:S at geom step 0
+  <sparsity:sparsity for geom step 0
+    nrows_g=73 nrows=7 sparsity=12.4126 nnzs=66147, refcount: 7>
+  <dData1D:(new from dSpData1D) n=66147, refcount: 1>
+refcount: 1>
+new_DM -- step:     1
+Initializing Density Matrix...
+DM filled with atomic data:
+<dSpData2D:DM initialized from atoms
+  <sparsity:sparsity for geom step 0
+    nrows_g=73 nrows=7 sparsity=12.4126 nnzs=66147, refcount: 8>
+  <dData2D:DM n=66147 m=1, refcount: 1>
+refcount: 1>
+No. of atoms with KB's overlaping orbs in proc 0. Max # of overlaps:     516    1486
+New grid distribution:   1
+           1       1:   20    1:    7    1:    7
+           2       1:   20    1:    7    8:   13
+           3       1:   20    1:    7   14:   19
+           4       1:   20    1:    7   20:   25
+           5       1:   20    8:   14    1:    7
+           6       1:   20    8:   14    8:   13
+           7       1:   20    8:   14   14:   19
+           8       1:   20    8:   14   20:   25
+           9       1:   20   15:   20    1:    7
+          10       1:   20   15:   20    8:   13
+          11       1:   20   15:   20   14:   19
+          12       1:   20   15:   20   20:   25
+
+InitMesh: MESH =    40 x    40 x    50 =       80000
+InitMesh: (bp) =    20 x    20 x    25 =       10000
+InitMesh: Mesh cutoff (required, used) =   300.000   302.964 Ry
+ExtMesh (bp) on 0 =   160 x   147 x   139 =     3269280
+New grid distribution:   2
+           1       8:   20    1:   10    1:    7
+           2       1:    7    1:   10    1:   13
+           3       8:   20    1:   10    8:   13
+           4       8:   20    1:   10   20:   25
+           5       8:   20   11:   20    1:    7
+           6       8:   20   11:   20   14:   19
+           7       1:    7    1:   10   14:   25
+           8       8:   20    1:   10   14:   19
+           9       1:    7   11:   20    1:   13
+          10       8:   20   11:   20    8:   13
+          11       1:    7   11:   20   14:   25
+          12       8:   20   11:   20   20:   25
+New grid distribution:   3
+           1       8:   20    1:   10    1:    7
+           2       1:    7    1:   10    1:   13
+           3       8:   20    1:   10    8:   13
+           4       8:   20    1:   10   20:   25
+           5       8:   20   11:   20    1:    7
+           6       8:   20   11:   20   14:   19
+           7       1:    7    1:   10   14:   25
+           8       8:   20    1:   10   14:   19
+           9       1:    7   11:   20    1:   13
+          10       8:   20   11:   20    8:   13
+          11       1:    7   11:   20   14:   25
+          12       8:   20   11:   20   20:   25
+Setting up quadratic distribution...
+ExtMesh (bp) on 0 =   153 x   150 x   139 =     3190050
+PhiOnMesh: Number of (b)points on node 0 =                  910
+PhiOnMesh: nlist on node 0 =               716753
+
+stepf: Fermi-Dirac step function
+
+siesta: Program's energy decomposition (eV):
+siesta: Ebs     =      -264.253547
+siesta: Eions   =       380.620085
+siesta: Ena     =        85.605069
+siesta: Ekin    =       278.052517
+siesta: Enl     =        -9.846698
+siesta: Eso     =         0.000000
+siesta: Edftu   =         0.000000
+siesta: DEna    =       -27.860850
+siesta: DUscf   =        23.688805
+siesta: DUext   =         0.000000
+siesta: Exc     =      -184.456184
+siesta: eta*DQ  =         0.000000
+siesta: Emadel  =         0.000000
+siesta: Emeta   =         0.000000
+siesta: Emolmec =        -7.935370
+siesta: Ekinion =         0.000000
+siesta: Eharris =      -186.344244
+siesta: Etot    =      -223.372796
+siesta: FreeEng =      -223.385848
+
+        iscf     Eharris(eV)        E_KS(eV)     FreeEng(eV)     dDmax    Ef(eV) dHmax(eV)
+   scf:    1     -186.344244     -223.372796     -223.385848 16.285068-16.513456 18.175669
+timer: Routine,Calls,Time,% = IterSCF        1      19.813  57.94
+   scf:    2     -242.122787     -235.335285     -235.350892  3.162430-16.247641  4.191477
+   scf:    3     -236.214216     -236.002491     -236.018098  1.198866-16.040754  0.095394
+   scf:    4     -236.014805     -236.009163     -236.024770  0.486128-16.024107  0.122422
+   scf:    5     -236.012535     -236.011536     -236.027143  0.780540-15.991349  0.118718
+   scf:    6     -236.012498     -236.012250     -236.027857  0.024276-16.000524  0.003326
+   scf:    7     -236.012252     -236.012251     -236.027858  0.003238-16.000563  0.001016
+   scf:    8     -236.012253     -236.012252     -236.027859  0.004440-16.000729  0.000718
+   scf:    9     -236.012254     -236.012253     -236.027860  0.011278-16.001134  0.000098
+   scf:   10     -236.012253     -236.012253     -236.027860  0.000146-16.001140  0.000071
+
+SCF Convergence by FreeE+DM+H criterion
+|FreeE_i-FreeE_(i-1)| (eV) <     0.00100000
+max |DM_out - DM_in|         :     0.0001460735
+max |H_out - H_in|      (eV) :     0.0000708582
+SCF cycle converged after 10 iterations
+
+Using DM_out to compute the final energy and forces
+No. of atoms with KB's overlaping orbs in proc 0. Max # of overlaps:     516    1486
+
+MM-Stress (kbar):       74.02       74.02      271.86       -0.00        0.00       -0.00
+
+siesta: E_KS(eV) =             -236.0123
+
+siesta: E_KS - E_eggbox =      -236.0123
+
+siesta: Atomic forces (eV/Ang):
+     1    0.000000    0.000000    0.000000
+     2    0.580167   -0.000027    0.087279
+     3   -0.580167    0.000027   -0.087279
+     4   -0.290106    0.502426    0.087279
+     5    0.290106   -0.502426   -0.087279
+     6   -0.290090   -0.502451    0.087220
+     7    0.290090    0.502451   -0.087220
+     8   -0.580167    0.000027    0.087279
+     9    0.580167   -0.000027   -0.087279
+    10    0.290106   -0.502426    0.087279
+    11   -0.290106    0.502426   -0.087279
+    12    0.290090    0.502451    0.087220
+    13   -0.290090   -0.502451   -0.087220
+----------------------------------------
+   Tot   -0.000000   -0.000000   -0.000000
+----------------------------------------
+   Max    0.580167
+   Res    0.325441    sqrt( Sum f_i^2 / 3N )
+----------------------------------------
+   Max    0.580167    constrained
+
+Stress tensor Voigt[x,y,z,yz,xz,xy] (kbar):    -1479.62    -1479.65      216.94        0.00       -0.00       -0.02
+(Free)E + p*V (eV/cell)     -193.0337
+Target enthalpy (eV/cell)     -236.0279
+
+siesta: Eigenvalues (eV):
+  ik is       eps
+   1  1  -27.7633  -21.3651  -21.3650  -20.6451  -20.6450  -20.4718  -20.1896  -15.4527  -15.4526  -14.4176
+         -14.4176  -12.0818   -8.7316   -8.7315   -7.3516   -4.8513   -4.2368   -4.2368   -3.3114   -3.0576
+   -3.0576   -2.2376    0.2650    0.2650    1.2730    2.3731    2.3736    2.9082    3.6726    3.6726
+    8.8774    9.6846   10.3842   10.3845   15.0430   15.0431   15.4352   15.4352   17.4378   18.1085
+   22.0215   22.0215   22.2229   29.4813   29.4814   30.0573   31.6886   31.7450   31.7450   34.3372
+   34.3372   35.2749   37.3923   37.3924   41.9628   41.9629   42.9142   43.4864   43.4865   47.5987
+   53.2533   53.2537   54.5035   55.3050   66.6096   66.6096   67.6679   67.6679   68.0653   84.2911
+   94.1093   94.1093   99.9558
+   2  1  -27.8962  -22.2173  -21.6827  -20.5086  -20.2469  -19.5907  -19.5331  -15.3871  -14.9231  -14.8691
+         -14.0559  -13.9909  -10.9904  -10.2334   -6.9197   -6.7158   -5.3161   -4.2708   -3.8190   -3.4248
+   -2.3357   -0.9883   -0.8248    0.8622    1.5111    2.3594    5.6121    7.3630    9.0611    9.1647
+   11.6514   12.3092   13.7821   14.5615   16.0496   17.1241   17.2711   18.4155   19.8045   20.5063
+   21.6434   22.3675   22.9569   23.5149   25.5568   27.5946   28.1763   32.7471   33.4952   33.6915
+   34.4808   35.5029   40.1137   40.2620   40.8127   41.5043   44.3611   46.5021   48.8258   54.9506
+   56.2922   57.5183   57.6809   62.4699   63.1813   67.0892   81.7179   83.5981   87.3681   87.6084
+   94.3405  104.7674  118.0801
+   3  1  -27.8962  -22.2173  -21.6827  -20.5086  -20.2469  -19.5907  -19.5332  -15.3870  -14.9231  -14.8691
+         -14.0559  -13.9909  -10.9904  -10.2334   -6.9196   -6.7159   -5.3161   -4.2709   -3.8190   -3.4247
+   -2.3357   -0.9883   -0.8248    0.8624    1.5111    2.3592    5.6121    7.3630    9.0611    9.1647
+   11.6512   12.3094   13.7820   14.5619   16.0496   17.1242   17.2710   18.4155   19.8046   20.5062
+   21.6437   22.3674   22.9568   23.5148   25.5568   27.5946   28.1759   32.7468   33.4951   33.6915
+   34.4809   35.5029   40.1139   40.2621   40.8127   41.5042   44.3611   46.5021   48.8255   54.9509
+   56.2916   57.5181   57.6808   62.4698   63.1811   67.0893   81.7179   83.5981   87.3682   87.6084
+   94.3404  104.7675  118.0801
+   4  1  -27.8962  -22.2173  -21.6827  -20.5086  -20.2469  -19.5907  -19.5331  -15.3871  -14.9231  -14.8691
+         -14.0559  -13.9909  -10.9904  -10.2334   -6.9197   -6.7158   -5.3161   -4.2708   -3.8190   -3.4248
+   -2.3357   -0.9883   -0.8248    0.8622    1.5111    2.3594    5.6121    7.3630    9.0611    9.1647
+   11.6514   12.3092   13.7821   14.5615   16.0496   17.1241   17.2711   18.4155   19.8045   20.5063
+   21.6435   22.3675   22.9569   23.5149   25.5568   27.5946   28.1763   32.7471   33.4952   33.6915
+   34.4808   35.5029   40.1137   40.2620   40.8127   41.5043   44.3611   46.5021   48.8257   54.9507
+   56.2921   57.5183   57.6810   62.4699   63.1813   67.0892   81.7179   83.5981   87.3681   87.6084
+   94.3405  104.7674  118.0802
+   5  1  -28.1284  -23.0760  -20.8112  -20.6542  -19.3668  -19.1579  -19.1577  -15.1619  -13.9210  -12.9777
+         -12.9777  -12.8027  -12.8027  -12.0105  -12.0104  -11.8431   -6.6581   -4.4982   -4.4981   -3.6793
+   -3.6793   -0.2303   -0.2297    1.0948    3.2751    3.2751    6.8829   10.8489   17.0600   17.7808
+   17.7808   17.8197   17.8198   18.9137   20.0781   20.0782   21.0267   23.0573   23.0575   23.9271
+   24.7611   24.7624   29.9711   29.9712   30.3765   30.3766   37.7309   39.9973   39.9973   42.9354
+   43.2096   44.7853   45.0557   50.0980   50.2701   50.2711   58.9326   58.9327   63.1651   63.1652
+   63.2612   63.2613   73.3256   74.8948   74.8951   79.6582   79.6585   80.8738   80.8741  113.8191
+  113.8194  132.6395  194.7563
+   6  1  -27.7224  -21.7568  -21.3146  -21.3146  -20.4981  -20.4981  -18.1841  -16.6612  -16.6611  -13.2329
+         -13.2328  -12.6884   -9.0891   -8.5975   -8.5974   -7.2034   -5.7371   -5.7371   -4.0364   -4.0364
+   -2.3552   -1.6631   -1.6631   -0.0081    0.0099    2.7013    2.7013    2.9005    5.7200    5.7204
+    7.0400   10.0451   10.0454   12.5977   15.3128   15.3128   15.7413   16.7600   16.7600   21.2114
+   21.2489   21.2492   23.9639   25.2171   25.2171   31.7213   31.7214   32.4716   35.6106   36.3634
+   36.3634   38.6646   39.5464   39.5466   41.6566   42.6961   42.6964   43.6249   43.6250   46.7557
+   54.7950   54.7952   60.6658   64.1146   65.3541   65.3545   79.4507   79.4512   80.2980   84.3951
+  105.5520  105.5520  121.7959
+   7  1  -27.8436  -22.2445  -21.6007  -21.2157  -19.7072  -19.4968  -18.7023  -16.8079  -15.9925  -14.7417
+         -12.8299  -11.0231  -10.8731   -9.5729   -9.3407   -8.7869   -6.7355   -4.8310   -4.1878   -3.6200
+   -3.0203   -2.4326    0.0193    0.4707    1.4748    2.5327    2.7483    4.0214    5.8706    6.3401
+    7.1514   14.1522   15.0227   16.2411   16.7682   18.0972   18.2364   19.9768   20.6689   21.6691
+   22.5393   23.0319   24.2102   25.8156   26.5656   29.3046   29.8545   32.4938   33.9388   35.4420
+   35.8127   36.3838   39.5821   40.6849   41.6306   43.1753   44.0170   46.0035   47.7347   49.4712
+   51.9688   54.8555   55.3409   58.5919   61.6611   63.2161   68.1894   70.6917   71.3579   78.6271
+   85.2706   86.5805   99.3362
+   8  1  -27.8436  -22.2445  -21.6007  -21.2157  -19.7072  -19.4970  -18.7023  -16.8078  -15.9924  -14.7417
+         -12.8299  -11.0231  -10.8731   -9.5729   -9.3407   -8.7869   -6.7355   -4.8310   -4.1879   -3.6200
+   -3.0202   -2.4327    0.0193    0.4707    1.4748    2.5328    2.7482    4.0213    5.8708    6.3400
+    7.1514   14.1526   15.0225   16.2412   16.7684   18.0973   18.2363   19.9767   20.6690   21.6689
+   22.5392   23.0319   24.2102   25.8157   26.5656   29.3050   29.8543   32.4936   33.9387   35.4420
+   35.8126   36.3840   39.5819   40.6850   41.6306   43.1752   44.0168   46.0034   47.7346   49.4713
+   51.9688   54.8549   55.3410   58.5919   61.6613   63.2159   68.1892   70.6919   71.3579   78.6271
+   85.2704   86.5806   99.3357
+   9  1  -27.8436  -22.2445  -21.6007  -21.2157  -19.7072  -19.4968  -18.7023  -16.8079  -15.9925  -14.7417
+         -12.8299  -11.0231  -10.8731   -9.5729   -9.3407   -8.7869   -6.7355   -4.8310   -4.1878   -3.6200
+   -3.0203   -2.4326    0.0193    0.4707    1.4748    2.5327    2.7483    4.0214    5.8706    6.3401
+    7.1514   14.1523   15.0227   16.2411   16.7682   18.0972   18.2364   19.9768   20.6690   21.6691
+   22.5393   23.0319   24.2102   25.8156   26.5656   29.3046   29.8545   32.4938   33.9388   35.4420
+   35.8127   36.3839   39.5820   40.6850   41.6306   43.1753   44.0169   46.0035   47.7347   49.4712
+   51.9689   54.8554   55.3409   58.5919   61.6612   63.2161   68.1893   70.6918   71.3579   78.6271
+   85.2705   86.5805   99.3361
+  10  1  -28.0429  -22.9506  -21.2970  -20.2139  -19.1763  -19.1760  -18.7013  -16.8727  -14.5199  -12.8552
+         -12.8552  -12.8262  -12.8262  -12.2607  -12.2607  -10.7439   -6.5235   -1.8024   -1.8022   -1.6303
+    0.1429    0.1429    0.2403    0.2407    8.0622    8.0623    8.2439    8.2439   10.7868   10.7868
+   11.7687   15.9035   15.9037   16.1173   18.8182   19.7849   20.1681   23.5869   23.5870   23.7138
+   24.8589   24.8590   24.9728   27.6787   27.6789   31.4006   31.4007   31.5674   31.5675   32.2338
+   40.2423   40.2427   42.8518   43.0912   43.1826   43.3648   46.1709   46.1711   47.3747   47.3762
+   48.6847   52.6527   52.6537   53.9746   75.8391   81.0661   81.0661   98.8896   98.8897  180.2986
+  180.2987  183.8093  183.8096
+  11  1  -27.8436  -22.2445  -21.6007  -21.2157  -19.7072  -19.4968  -18.7023  -16.8079  -15.9925  -14.7417
+         -12.8299  -11.0231  -10.8731   -9.5729   -9.3407   -8.7869   -6.7355   -4.8310   -4.1878   -3.6200
+   -3.0203   -2.4326    0.0193    0.4707    1.4748    2.5327    2.7483    4.0214    5.8706    6.3401
+    7.1514   14.1523   15.0227   16.2411   16.7682   18.0972   18.2364   19.9768   20.6690   21.6691
+   22.5393   23.0319   24.2102   25.8156   26.5656   29.3046   29.8545   32.4938   33.9388   35.4420
+   35.8127   36.3839   39.5820   40.6849   41.6306   43.1753   44.0169   46.0035   47.7347   49.4712
+   51.9689   54.8554   55.3409   58.5919   61.6612   63.2161   68.1893   70.6918   71.3579   78.6271
+   85.2705   86.5805   99.3361
+  12  1  -27.8436  -22.2445  -21.6007  -21.2157  -19.7072  -19.4970  -18.7023  -16.8078  -15.9924  -14.7417
+         -12.8299  -11.0231  -10.8731   -9.5729   -9.3407   -8.7869   -6.7355   -4.8310   -4.1879   -3.6200
+   -3.0202   -2.4327    0.0193    0.4707    1.4748    2.5328    2.7482    4.0213    5.8708    6.3400
+    7.1514   14.1526   15.0225   16.2412   16.7684   18.0973   18.2363   19.9767   20.6690   21.6689
+   22.5392   23.0319   24.2102   25.8157   26.5656   29.3050   29.8543   32.4936   33.9387   35.4420
+   35.8126   36.3840   39.5819   40.6850   41.6306   43.1752   44.0168   46.0034   47.7346   49.4713
+   51.9688   54.8549   55.3410   58.5919   61.6613   63.2159   68.1892   70.6919   71.3579   78.6271
+   85.2704   86.5806   99.3357
+  13  1  -27.8436  -22.2445  -21.6007  -21.2157  -19.7072  -19.4968  -18.7023  -16.8079  -15.9925  -14.7417
+         -12.8299  -11.0231  -10.8731   -9.5729   -9.3407   -8.7869   -6.7355   -4.8310   -4.1878   -3.6200
+   -3.0203   -2.4326    0.0193    0.4707    1.4748    2.5327    2.7483    4.0214    5.8706    6.3401
+    7.1514   14.1522   15.0227   16.2411   16.7682   18.0972   18.2364   19.9768   20.6689   21.6691
+   22.5393   23.0319   24.2102   25.8156   26.5656   29.3046   29.8545   32.4938   33.9388   35.4420
+   35.8127   36.3838   39.5821   40.6849   41.6306   43.1753   44.0170   46.0035   47.7347   49.4712
+   51.9688   54.8555   55.3409   58.5919   61.6611   63.2161   68.1893   70.6917   71.3579   78.6271
+   85.2706   86.5805   99.3362
+  14  1  -27.7224  -21.7568  -21.3146  -21.3146  -20.4981  -20.4981  -18.1841  -16.6612  -16.6611  -13.2329
+         -13.2328  -12.6884   -9.0891   -8.5975   -8.5974   -7.2034   -5.7371   -5.7371   -4.0364   -4.0364
+   -2.3552   -1.6631   -1.6631   -0.0081    0.0099    2.7013    2.7013    2.9005    5.7200    5.7204
+    7.0400   10.0451   10.0454   12.5977   15.3128   15.3128   15.7413   16.7600   16.7600   21.2114
+   21.2489   21.2492   23.9639   25.2171   25.2171   31.7213   31.7214   32.4716   35.6106   36.3634
+   36.3634   38.6646   39.5464   39.5466   41.6566   42.6961   42.6964   43.6249   43.6250   46.7557
+   54.7950   54.7952   60.6658   64.1146   65.3541   65.3545   79.4507   79.4512   80.2980   84.3951
+  105.5520  105.5520  121.7959
+siesta: Fermi energy =     -16.001140 eV
+
+siesta: Program's energy decomposition (eV):
+siesta: Ebs     =      -335.406880
+siesta: Eions   =       380.620085
+siesta: Ena     =        85.605069
+siesta: Ekin    =       227.740910
+siesta: Enl     =         5.117817
+siesta: Eso     =         0.000000
+siesta: Edftu   =         0.000000
+siesta: DEna    =         3.683487
+siesta: DUscf   =         4.722513
+siesta: DUext   =         0.000000
+siesta: Exc     =      -174.326595
+siesta: eta*DQ  =         0.000000
+siesta: Emadel  =         0.000000
+siesta: Emeta   =         0.000000
+siesta: Emolmec =        -7.935370
+siesta: Ekinion =         0.000000
+siesta: Eharris =      -236.012253
+siesta: Etot    =      -236.012253
+siesta: FreeEng =      -236.027860
+
+siesta: Final energy (eV):
+siesta:  Band Struct. =    -335.406880
+siesta:       Kinetic =     227.740910
+siesta:       Hartree =      76.100816
+siesta:       Edftu   =       0.000000
+siesta:       Eso     =       0.000000
+siesta:    Ext. field =       0.000000
+siesta:   Exch.-corr. =    -174.326595
+siesta:  Ion-electron =    -528.735633
+siesta:       Ion-ion =     171.143618
+siesta:       Ekinion =       0.000000
+siesta:         Total =    -236.012253
+siesta:         Fermi =     -16.001140
+
+siesta: Atomic forces (eV/Ang):
+siesta:      1    0.000000    0.000000    0.000000
+siesta:      2    0.580167   -0.000027    0.087279
+siesta:      3   -0.580167    0.000027   -0.087279
+siesta:      4   -0.290106    0.502426    0.087279
+siesta:      5    0.290106   -0.502426   -0.087279
+siesta:      6   -0.290090   -0.502451    0.087220
+siesta:      7    0.290090    0.502451   -0.087220
+siesta:      8   -0.580167    0.000027    0.087279
+siesta:      9    0.580167   -0.000027   -0.087279
+siesta:     10    0.290106   -0.502426    0.087279
+siesta:     11   -0.290106    0.502426   -0.087279
+siesta:     12    0.290090    0.502451    0.087220
+siesta:     13   -0.290090   -0.502451   -0.087220
+siesta: ----------------------------------------
+siesta:    Tot   -0.000000   -0.000000   -0.000000
+
+siesta: Stress tensor (static) (eV/Ang**3):
+siesta:    -0.923498   -0.000012    0.000000
+siesta:    -0.000012   -0.923512    0.000000
+siesta:    -0.000000    0.000000    0.135405
+
+siesta: Cell volume =         75.357581 Ang**3
+
+siesta: Pressure (static):
+siesta:                Solid            Molecule  Units
+siesta:           0.00621386          0.00651318  Ry/Bohr**3
+siesta:           0.57053524          0.59801791  eV/Ang**3
+siesta:         914.10810427        958.14067706  kBar
+(Free)E+ p_basis*V_orbitals  =        -198.091788
+(Free)Eharris+ p_basis*V_orbitals  =        -198.091788
+
+cite: Please see "LiC12_scf.bib" for an exhaustive BiBTeX file.
+cite: Please clearly indicate Siesta version in published work: 4.1.5
+cite: This calculation has made use of the following articles
+cite: which are encouraged to be cited in a published work.
+        Primary SIESTA paper
+          DOI: www.doi.org/10.1088/0953-8984/14/11/302
+
+>> End of run:   9-NOV-2022   3:59:46
+Job completed
